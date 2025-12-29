@@ -1,6 +1,4 @@
 import Title from "@/components/title";
-import { log } from "console";
-
 import Head from "next/head";
 
 const products = [

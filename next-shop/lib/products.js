@@ -1,3 +1,5 @@
+
+
 function stripProduct(product) {
   return {
     id: product.id,

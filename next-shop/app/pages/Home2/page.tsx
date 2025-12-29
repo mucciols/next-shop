@@ -1,6 +1,7 @@
 'use client';
 import Title from "@/components/title";
 import { getProducts } from "@/lib/products";
+import { Product } from "@/lib/types";
 
 import Head from "next/head";
 import { useEffect, useState } from "react";
@@ -23,7 +24,7 @@ export default function HomePage() {
       <main className="p-2">
         <Title>Next Shop clientside</Title>
         <ul>
-          { products.map((product)=>(
+          { products.map((product:Product)=>(
             <li key={product.id}>{product.title}</li>
           ))}
         </ul>

@@ -1,5 +1,6 @@
 import Title from "@/components/title";
 import { getProducts } from "@/lib/products";
+import { Product } from "@/lib/types";
 
 import Head from "next/head";
 
@@ -10,12 +11,12 @@ export default async function HomePage() {
   return (
     <>
       <Head>
-        <title>Next Shop</title>
+        <title>Next Shop 1a serverside</title>
       </Head>
       <main className="p-2">
-        <Title>Next Shop</Title>
+        <Title>Next Shop 1a serverside</Title>
         <ul>
-          { products.map((product)=>(
+          { products.map((product:Product)=>(
             <li key={product.id}>{product.title}</li>
           ))}
         </ul>
