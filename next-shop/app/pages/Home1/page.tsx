@@ -1,15 +1,13 @@
 import Title from "@/components/title";
-import { log } from "console";
+import { getProducts } from "@/lib/products";
 
 import Head from "next/head";
 
-const products = [
-  { id:1, title :'First Product' },
-  { id:2, title :'Second product' },
-];
+export default async function HomePage() {
+  const products = await getProducts();
 
-export default function HomePage() {
-  console.log('[Home Page] render', products)
+  console.log('[HomePage] 1 products', products)
+
   return (
     <>
       <Head>
