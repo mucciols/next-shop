@@ -1,22 +1,22 @@
 import Title from "@/components/title";
+import { getProductsRevalidate } from "@/lib/produtcs";
+import { Product } from "@/lib/types";
+
 import Head from "next/head";
 
-const products = [
-  { id:1, title :'First Product' },
-  { id:2, title :'Second product' },
-];
-
-export default function HomePage() {
-  console.log('[Home Page] render', products)
+//fetch server side data
+export default async function HomePage() {
+  const products = await getProductsRevalidate();
+  console.log('[HomePage] 1 products', products)
   return (
     <>
       <Head>
-        <title>Next Shop</title>
+        <title>Next Shop 1b serverside revalidate</title>
       </Head>
       <main className="p-2">
-        <Title>Next Shop</Title>
+        <Title>Next Shop 1b serverside revalidate</Title>
         <ul>
-          { products.map((product)=>(
+          { products.map((product:Product)=>(
             <li key={product.id}>{product.title}</li>
           ))}
         </ul>
