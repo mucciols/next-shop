@@ -3,11 +3,10 @@ import { getProducts } from "@/lib/products";
 
 import Head from "next/head";
 
+//fetch server side data
 export default async function HomePage() {
   const products = await getProducts();
-
   console.log('[HomePage] 1 products', products)
-
   return (
     <>
       <Head>
