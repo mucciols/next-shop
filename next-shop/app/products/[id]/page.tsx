@@ -25,7 +25,7 @@ export default function ProductPage() {
   return (
     <>
       <Head>
-        <title>Next Shop 1b serverside revalidate</title>
+        <title>Next Shop 1b useEffect</title>
       </Head>
       <main className="p-2">
         <Title>{product.title} </Title>

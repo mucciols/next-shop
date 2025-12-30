@@ -11,10 +11,10 @@ export default async function HomePage() {
   return (
     <>
       <Head>
-        <title>Next Shop 1b serverside revalidate</title>
+        <title>Next Shop 1b - HOME- serverside revalidate</title>
       </Head>
       <main className="p-2">
-        <Title>Next Shop 1b serverside revalidate</Title>
+        <Title>Next Shop 1b - HOME- serverside revalidate</Title>
         <ul>
           { products.map((product:Product)=>(
             <li key={product.id}>
