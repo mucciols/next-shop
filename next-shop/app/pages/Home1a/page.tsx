@@ -1,6 +1,6 @@
 import Title from "@/components/title";
 import { getProducts } from "@/lib/products";
-import { Product } from "@/lib/types";
+import { Product } from "@/types/product";
 
 import Head from "next/head";
 

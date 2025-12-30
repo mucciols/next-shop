@@ -1,8 +1,8 @@
-import Title from "@/components/title";
 import { getProductsRevalidate } from "@/lib/produtcs";
-import { Product } from "@/lib/types";
-
+import { Product } from "@/types/product";
 import Head from "next/head";
+import Link from "next/link";
+import Title from "@/components/title";
 
 //fetch server side data
 export default async function HomePage() {
@@ -17,7 +17,12 @@ export default async function HomePage() {
         <Title>Next Shop 1b serverside revalidate</Title>
         <ul>
           { products.map((product:Product)=>(
-            <li key={product.id}>{product.title}</li>
+            <li key={product.id}>
+              <Link href={`/products/${product.id}`}>
+                  {product.title}
+              </Link>
+              
+            </li>
           ))}
         </ul>
       </main>

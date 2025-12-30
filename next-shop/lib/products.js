@@ -12,3 +12,9 @@ export async function getProducts() {
   const products = await response.json();
   return products.map(stripProduct);
 }
+
+export async function getProduct(id) {
+  const response = await fetch(`http://localhost:1337/products/${id}`);
+  const products = await response.json();
+  return products;
+}

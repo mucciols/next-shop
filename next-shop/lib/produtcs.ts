@@ -1,4 +1,4 @@
-import { Product } from "./types";
+import { Product } from "../types/product";
 
 export async function getProductsRevalidate(): Promise<Product[]> {
   const res = await fetch("http://localhost:1337/products", {

@@ -1,6 +1,6 @@
 import Title from "@/components/title";
 import { getProductsRevalidate } from "@/lib/produtcs";
-import { Product } from "@/lib/types";
+import { Product } from "@/types/product";
 
 import Head from "next/head";
 

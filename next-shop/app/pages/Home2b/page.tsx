@@ -1,6 +1,6 @@
 "use client";
 import Title from "@/components/title";
-import { Product } from "@/lib/types";
+import { Product } from "@/types/product";
 
 import Head from "next/head";
 import { useEffect, useState } from "react";
