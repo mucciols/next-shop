@@ -1,4 +1,4 @@
-
+import { notFound } from "next/navigation";
 
 function stripProduct(product) {
   return {
@@ -15,6 +15,9 @@ export async function getProducts() {
 
 export async function getProduct(id) {
   const response = await fetch(`http://localhost:1337/products/${id}`);
+  if (response.status === 404) {
+    return null; //
+  }
   const products = await response.json();
   return products;
 }
