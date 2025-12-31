@@ -6,6 +6,7 @@ import Title from "@/components/title";
 import { useEffect, useState } from "react";
 import { getProduct } from "@/lib/products";
 import { Product } from "../../../types/product";
+import { NextShopApiError } from "@/app/api/api";
 
 export default function ProductPage() {
   const params = useParams(); // Per leggere l'ID lato client
@@ -19,10 +20,13 @@ export default function ProductPage() {
 
   useEffect(() => {
     getProduct(id).then((product) => {
-      if (!product) 
+      setProduct(product);
+    }).catch((error) => {
+      if (error instanceof NextShopApiError && error.status === 404) {
         setIsNotFound(true);
-      else 
-        setProduct(product);
+      } else {
+        console.error(error);
+      }
     });
   }, []);
 
