@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function ProductCard({ product }: { product: Product }) {
   return (
-    <div className="border my-4 w-80">
+    <div className="border my-4 w-80 shadow hover:shadow-xl">
       <Link href={`/products/${product.id}`}>
         <img src="https://dummyimage.com/320x240"  alt=""/>
         <div className="p-2 flex justify-between items-baseline">
@@ -11,7 +11,7 @@ export default function ProductCard({ product }: { product: Product }) {
             {product.title}
           </h2>
           <span>
-            $15.00
+            $ {product.price.toFixed(2)} 
           </span>
         </div>
       </Link>
