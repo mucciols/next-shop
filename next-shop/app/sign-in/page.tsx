@@ -15,10 +15,10 @@ export default function SignInPage() {
     event.preventDefault();
     setState({ error: false, loading: true });
     try {
-      const response = await fetchJson("http://localhost:1337/auth/local", {
+      const response = await fetchJson("api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ identifier: email, password: password }),
+        body: JSON.stringify({ email: email, password: password }),
       });
       console.log("sign in response: ", response);
       setState({ error: false, loading: false });

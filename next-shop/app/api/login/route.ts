@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { fetchJson } from "../api";
+import { cookies } from "next/headers";
+//import { cookie } from 'cookie';
 
 export async function POST(req: NextRequest, res: NextResponse) {
   const body = await req.json();
@@ -20,10 +22,21 @@ export async function POST(req: NextRequest, res: NextResponse) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ identifier: email, password: password }),
     });
-    return NextResponse.json({
+
+    const res = NextResponse.json({
       id: user.id,
       name: user.username,
     });
+
+    res.cookies.set("jwt", jwt, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "lax",
+      path: "/api",
+      maxAge: 60 * 60,
+    });
+
+    return res;
   } catch (error) {
     return NextResponse.json({ error: error }, { status: 401 });
   }
