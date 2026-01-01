@@ -1,32 +1,55 @@
-'use client'
+"use client";
 import Button from "@/components/Button";
 import Field from "@/components/Field";
 import Input from "@/components/Input";
 import Page from "@/components/Page";
 import { useState } from "react";
+import { fetchJson } from "../api/api";
 
 export default function SignInPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [state, setState] = useState({ loading: false, error: false });
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log('event', { email, password });
-  }
+    setState({ error: false, loading: true });
+    try {
+      const response = await fetchJson("http://localhost:1337/auth/local", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ identifier: email, password: password }),
+      });
+      console.log("sign in response: ", response);
+      setState({ error: false, loading: false });
+    } catch (error) {
+      setState({ error: true, loading: false });
+    }
+  };
 
   return (
     <Page title="sign in">
       <form onSubmit={handleSubmit}>
         <Field label="Email">
-          <Input required onChange={(event) => setEmail(event.target.value)} value={email} type="email"></Input>
+          <Input
+            required
+            onChange={(event) => setEmail(event.target.value)}
+            value={email}
+            type="email"
+          ></Input>
         </Field>
-
         <Field label="Password">
-          <Input required onChange={(event) => setPassword(event.target.value)} value={password} type="password"></Input>
+          <Input
+            required
+            onChange={(event) => setPassword(event.target.value)}
+            value={password}
+            type="password"
+          ></Input>
         </Field>
-        <Button type="submit">
-          Sign In
-        </Button>
+        {state.error && <p className="text-red-700">Invalid credentials</p>}
+        {state.loading ? (<p>...Loading</p>) : (
+          <Button type="submit">Sign In</Button>
+        ) }
       </form>
     </Page>
   );

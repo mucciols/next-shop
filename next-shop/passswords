@@ -1,3 +1,6 @@
 strapi:
   admin@example.com
   Password123
+
+  alice@example.com
+  Alice123

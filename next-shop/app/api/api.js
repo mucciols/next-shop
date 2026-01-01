@@ -1,11 +1,9 @@
 
-export async function fetchJson(url) {
-  const response = await fetch(url);
-
+export async function fetchJson(url, options) {
+  const response = await fetch(url, options);
   if(!response.ok) {
     throw new NextShopApiError(url, response.status)
   }
-
   return await response.json();
 }
 
