@@ -32,8 +32,8 @@ export async function POST(req: NextRequest, res: NextResponse) {
       httpOnly: true,
       secure: true,
       sameSite: "lax",
-      path: "/api",
-      maxAge: 60 * 60,
+      path: '/',
+      maxAge: 60 * 60 * 24 * 365
     });
 
     return res;
