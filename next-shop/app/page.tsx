@@ -21,10 +21,10 @@ export default function HomePage() {
   return (
     <>
       <Head>
-        <title>Next Shop 1b - HOME- serverside revalidate</title>
+        <title>Next Shop 1b - HOME- serverside use effect</title>
       </Head>
       <main className="p-2">
-        <Title>Next Shop 1b - HOME- serverside revalidate</Title>
+        <Title>Next Shop 1b - HOME- serverside use effect</Title>
         <ul className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           {products.map((product: Product) => (
             <li key={product.id}>
