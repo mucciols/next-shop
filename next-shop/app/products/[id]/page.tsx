@@ -15,19 +15,28 @@ export default function ProductPage() {
     id: 0,
     title: "",
     description: "",
+    picture: {
+      id: 0,
+      title: "",
+      url: "",
+    },
+    pictureUrl: "",
+    price: 0,
   });
   const [isNotFound, setIsNotFound] = useState(false);
 
   useEffect(() => {
-    getProduct(id).then((product) => {
-      setProduct(product);
-    }).catch((error) => {
-      if (error instanceof NextShopApiError && error.status === 404) {
-        setIsNotFound(true);
-      } else {
-        console.error(error);
-      }
-    });
+    getProduct(id)
+      .then((product) => {
+        setProduct(product);
+      })
+      .catch((error) => {
+        if (error instanceof NextShopApiError && error.status === 404) {
+          setIsNotFound(true);
+        } else {
+          console.error(error);
+        }
+      });
   }, []);
 
   // Se l'effetto ha rilevato un 404, scateniamo la UI di not-found
@@ -42,7 +51,20 @@ export default function ProductPage() {
       </Head>
       <main className="p-2">
         <Title>{product.title} </Title>
-        <p>{product.description}</p>
+        <div className="flex flex-col lg:flex-row ">
+          <div>
+            <img src={product.pictureUrl} height={480} width={640} alt="" />
+          </div>
+          
+          <div className="flex-1 lg:ml-4">
+            <p className="text-sm">
+              {product.description}
+            </p>
+            <p className="text-lg font-bold mt-2">
+              $ {product.price.toFixed(2)}
+            </p>
+          </div>
+        </div>
       </main>
     </>
   );
