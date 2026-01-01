@@ -1,12 +1,11 @@
-"use client"; // Obbligatorio per usare gli hooks
+"use client";
 
 import { notFound, useParams } from "next/navigation";
-import Head from "next/head";
-import Title from "@/components/title";
 import { useEffect, useState } from "react";
 import { getProduct } from "@/lib/products";
 import { Product } from "../../../types/product";
 import { NextShopApiError } from "@/app/api/api";
+import Page from "@/components/Page";
 
 export default function ProductPage() {
   const params = useParams(); // Per leggere l'ID lato client
@@ -45,27 +44,17 @@ export default function ProductPage() {
   }
 
   return (
-    <>
-      <Head>
-        <title>Next Shop 1b useEffect</title>
-      </Head>
-      <main className="p-2">
-        <Title>{product.title} </Title>
-        <div className="flex flex-col lg:flex-row ">
-          <div>
-            <img src={product.pictureUrl} height={480} width={640} alt="" />
-          </div>
-          
-          <div className="flex-1 lg:ml-4">
-            <p className="text-sm">
-              {product.description}
-            </p>
-            <p className="text-lg font-bold mt-2">
-              $ {product.price.toFixed(2)}
-            </p>
-          </div>
+    <Page title={product.title}>
+      <div className="flex flex-col lg:flex-row ">
+        <div>
+          <img src={product.pictureUrl} height={480} width={640} alt="" />
         </div>
-      </main>
-    </>
+
+        <div className="flex-1 lg:ml-4">
+          <p className="text-sm">{product.description}</p>
+          <p className="text-lg font-bold mt-2">$ {product.price.toFixed(2)}</p>
+        </div>
+      </div>
+    </Page>
   );
 }
