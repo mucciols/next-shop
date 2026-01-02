@@ -5,8 +5,10 @@ import Input from "@/components/Input";
 import Page from "@/components/Page";
 import { useState } from "react";
 import { fetchJson } from "../api/api";
+import { useRouter } from "next/navigation";
 
 export default function SignInPage() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [state, setState] = useState({ loading: false, error: false });
@@ -20,8 +22,9 @@ export default function SignInPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email, password: password }),
       });
-      console.log("sign in response: ", response);
       setState({ error: false, loading: false });
+      console.log("sign in response: ", response);
+      router.push('/');
     } catch (error) {
       setState({ error: true, loading: false });
     }

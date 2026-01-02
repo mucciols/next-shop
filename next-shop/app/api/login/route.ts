@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { fetchJson } from "../api";
-import { cookies } from "next/headers";
-//import { cookie } from 'cookie';
 
 export async function POST(req: NextRequest, res: NextResponse) {
   const body = await req.json();
