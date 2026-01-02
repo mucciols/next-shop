@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { fetchJson } from "../api";
+import store from "@/lib/redux/store";
 
 export async function POST(req: NextRequest, res: NextResponse) {
   const body = await req.json();
@@ -26,12 +27,17 @@ export async function POST(req: NextRequest, res: NextResponse) {
       name: user.username,
     });
 
+    store.dispatch({type: "ADD_USER", payload:{ id: user.id, name: user.username }});
+    console.log("store 1: ", store.getState());
+    store.dispatch({type: "REMOVE_USER", payload:{ id: user.id}});
+    console.log("store 1: ", store.getState());
+
     res.cookies.set("jwt", jwt, {
       httpOnly: true,
       secure: false,
       sameSite: "lax",
-      path: '/api',
-      maxAge: 60 * 60 * 24 * 365
+      path: "/api",
+      maxAge: 60 * 60 * 24 * 365,
     });
 
     return res;
