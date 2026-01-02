@@ -28,9 +28,9 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
     res.cookies.set("jwt", jwt, {
       httpOnly: true,
-      secure: true,
+      secure: false,
       sameSite: "lax",
-      path: '/',
+      path: '/api',
       maxAge: 60 * 60 * 24 * 365
     });
 

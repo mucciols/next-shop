@@ -10,21 +10,33 @@ export default function NavBar() {
   useEffect(() => {
     const loadUser = async () => {
       try {
-        const response = await fetchJson("api/user", {
+        const response = await fetchJson("/api/user", {
           method: "GET",
         });
 
         console.log("sign in response in navbar:", response);
         setUser(response);
       } catch (error) {
-        console.error("User not logged in", error);
+        console.error("navbar User not logged in", error);
         setUser(null);
       }
     };
     loadUser();
   }, []);
 
+  const handleSignOut = async () => {
+    try {
+        const response = await fetchJson("/api/logout", {
+          method: "GET",
+        });
 
+        console.log("log out in response in navbar:", response);
+        setUser(null);
+      } catch (error) {
+        // console.error("User not logged in", error);
+        setUser(null);
+      }
+  }
 
   return (
     <nav className="px-2 py-1 text-sm">
@@ -37,7 +49,7 @@ export default function NavBar() {
           <>
             <li>{user.name}</li>
             <li>
-              <button>Sign Out</button>
+              <button onClick={handleSignOut}>Sign Out</button>
             </li>
           </>
         ) : (

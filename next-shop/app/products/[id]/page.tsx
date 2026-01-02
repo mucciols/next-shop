@@ -47,7 +47,11 @@ export default function ProductPage() {
     <Page title={product.title}>
       <div className="flex flex-col lg:flex-row ">
         <div>
-          <img src={product.pictureUrl} height={480} width={640} alt="" />
+          {
+            product.pictureUrl && (
+              <img src={product.pictureUrl} height={480} width={640} alt={product.title} />
+            )
+          }
         </div>
 
         <div className="flex-1 lg:ml-4">
