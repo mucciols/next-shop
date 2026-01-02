@@ -23,7 +23,7 @@ export default function SignInPage() {
         body: JSON.stringify({ email: email, password: password }),
       });
       setState({ error: false, loading: false });
-      console.log("sign in response: ", response);
+      // console.log("sign in response: ", response);
       router.push('/');
     } catch (error) {
       setState({ error: true, loading: false });

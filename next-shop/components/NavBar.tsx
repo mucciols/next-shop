@@ -13,11 +13,10 @@ export default function NavBar() {
         const response = await fetchJson("/api/user", {
           method: "GET",
         });
-
-        console.log("sign in response in navbar:", response);
+        //console.log("sign in response in navbar:", response);
         setUser(response);
       } catch (error) {
-        console.error("navbar User not logged in", error);
+        //console.error("navbar User not logged in", error);
         setUser(null);
       }
     };

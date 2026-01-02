@@ -7,16 +7,17 @@ export async function GET(req: NextRequest, res: NextResponse) {
   // console.log("--------------------------------------");
   // console.log("--------------------------------------");
   // console.log("--------------------------------------");
+  // console.log(jwtCookie);
 
   if (!jwtCookie) {
-    return NextResponse.json({ error: "Cookie not found" }, { status: 401 });
+    //return NextResponse.json({ error: "Cookie not found" }, { status: 401 });
+    return NextResponse.json(null);
   }
-    
 
   const { name, value } = jwtCookie;
 
-  console.log("lettura dei cookie 1", name);
-  console.log("lettura dei cookie 2", value);
+  // console.log("lettura dei cookie 1", name);
+  // console.log("lettura dei cookie 2", value);
 
   try {
     const user = await fetchJson("http://localhost:1337/users/me", {
