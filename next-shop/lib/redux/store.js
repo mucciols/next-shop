@@ -1,7 +1,7 @@
 import { combineReducers, compose  } from 'redux'
 import { configureStore } from '@reduxjs/toolkit';
 import userLoginreducer from './userLoginReduder/reducer'
-import todoListReducer from './todoListReducer/action';
+import tasksReducer from './todoListReducer/action';
 
 // compose ehnancers server per React DevTools
 // nel caso non venga usato, toglierlo anche dal create store
@@ -10,15 +10,15 @@ import todoListReducer from './todoListReducer/action';
 //     applyMiddleware(thunk),
 // );
 
-const composeEnhancers =
-  typeof window !== 'undefined' &&
-  (window).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    ? (window).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    : compose;
+// const composeEnhancers =
+//   typeof window !== 'undefined' &&
+//   (window).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+//     ? (window).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+//     : compose;
 
 
 const rootReducer = combineReducers({
-  toDoList: todoListReducer,
+  toDoList: tasksReducer,
   userLogin: userLoginreducer,
 });
 
@@ -31,7 +31,5 @@ export const store = configureStore({
   // middleware: (getDefaultMiddleware) =>
   //   getDefaultMiddleware().concat(/* altri middleware */),
 });
-
-
 
 export default store;

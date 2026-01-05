@@ -6,11 +6,9 @@ import { useEffect, useState } from "react";
 import { getProducts } from "@/lib/products";
 import Page from "@/components/Page";
 import store from "@/lib/redux/store";
-import {
-  fetchToDo,
-} from "@/lib/redux/todoListReducer/action";
-
-import { addTask, removeTask, completedTask } from "@/lib/redux/todoListReducer/action";
+import { addTask, completedTask, removeTask } from "@/lib/redux/todoListReducer/action";
+//import {  fetchToDo,} from "@/lib/redux/todoListReducer/action";
+//import { addTask, removeTask, completedTask } from "@/lib/redux/todoListReducer/action";
 
 
 //fetch server side data

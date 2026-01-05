@@ -1,4 +1,4 @@
-import { createAction } from "@reduxjs/toolkit";
+import { createAction, createReducer } from "@reduxjs/toolkit";
 import store from "@/lib/redux/store";
 
 export const addTask = createAction<{ task: string }>("TASK_ADD");
@@ -24,30 +24,62 @@ export const fetchToDo = () => async () => {
   store.dispatch(addTask(task.title));
 };
 
-//to do list reducer
+//Reducer
 let id = 0;
 
-export default function reducer(state = [], action) {
-    
-  switch (action.type) {
-    case addTask.type:
-      return [
-        ...state,
-        {
-          id: ++id,
-          task: action.payload.task,
-          completed: false,
-        },
-      ];
-
-    case removeTask.type:
-      return state.filter((task) => task.id !== action.payload.id);
-
-    case completedTask.type:
-      return state.map((task) =>
-        task.id === action.payload.id ? { ...task, completed: true } : task
-      );
-    default:
-      return state;
-  }
+interface Task {
+  id: number;
+  task: string;
+  completed: boolean;
 }
+
+const initialState: Task[] = [];
+
+const tasksReducer = createReducer(initialState, (builder) => {
+  builder.addCase(addTask, (state, action) => {
+    state.push({
+      id: ++id,
+      task: action.payload.task,
+      completed: false,
+    });
+  });
+
+  builder.addCase(removeTask, (state, action) => {
+    return state.filter((task) => task.id !== action.payload.id);
+  });
+
+  // 3️⃣ Complete Task
+  builder.addCase(completedTask, (state, action) => {
+    const task = state.find((t) => t.id === action.payload.id);
+    if (task) 
+      task.completed = true;
+  });
+
+});
+
+export default tasksReducer;
+
+
+// export default function reducer(state = [], action) {
+//   switch (action.type) {
+//     case addTask.type:
+//       return [
+//         ...state,
+//         {
+//           id: ++id,
+//           task: action.payload.task,
+//           completed: false,
+//         },
+//       ];
+
+//     case removeTask.type:
+//       return state.filter((task) => task.id !== action.payload.id);
+
+//     case completedTask.type:
+//       return state.map((task) =>
+//         task.id === action.payload.id ? { ...task, completed: true } : task
+//       );
+//     default:
+//       return state;
+//   }
+// }
