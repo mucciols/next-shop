@@ -6,10 +6,16 @@ import { useEffect, useState } from "react";
 import { getProducts } from "@/lib/products";
 import Page from "@/components/Page";
 import store from "@/lib/redux/store";
-import { addTask, completedTask, removeTask } from "@/lib/redux/todoListReducer/action";
+import {
+  addTask,
+  completedTask,
+  removeTask,
+} from "@/lib/redux/todoListReducer/action";
+
+import { addUser } from "@/lib/redux/userLoginReduder/actions";
+
 //import {  fetchToDo,} from "@/lib/redux/todoListReducer/action";
 //import { addTask, removeTask, completedTask } from "@/lib/redux/todoListReducer/action";
-
 
 //fetch server side data
 export default function HomePage() {
@@ -29,7 +35,6 @@ export default function HomePage() {
     // cosa ossia aggiungere un elemento allo store
     //store.dispatch(addTask("Task 1"));
 
-
     //store.dispatch({ type: "ADD_TASK", payload:{ task: "Task 1" }})
     //store.dispatch(addTask({ task: "Task 1" }))
     store.dispatch(addTask({ task: "Title 1" }));
@@ -45,6 +50,13 @@ export default function HomePage() {
 
     //store.dispatch(removeTask(1));
     //store.dispatch({ type: "REMOVE_TASK", payload:{ id: 1 } })
+
+    // Aggiungi un utente
+    store.dispatch(addUser({ name: "Mario Rossi" }));
+    //console.log(store.getState().user);
+    //console.log(store.getState().user);
+
+    const state = store.getState();
 
     //console.log("---Store content:", store.getState());
     console.log("-------------------");
