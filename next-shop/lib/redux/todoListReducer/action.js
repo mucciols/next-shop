@@ -8,3 +8,7 @@ export const addTask = (task) => {
 export const removeTask = (taskId) => {
   return { type: actionTypes.REMOVE_TASK, payload:{ id: taskId }}
 }
+
+export const completedTask = (taskId)=> {
+  return { type: actionTypes.TASK_COMPLETED, payload:{ id: taskId }}
+}
