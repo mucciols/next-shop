@@ -1,6 +1,5 @@
-import { legacy_createStore as createStore, combineReducers, applyMiddleware, compose  } from 'redux'
-import { thunk } from 'redux-thunk';
-
+import { combineReducers, compose  } from 'redux'
+import { configureStore } from '@reduxjs/toolkit';
 import userLoginreducer from './userLoginReduder/reducer'
 import todoListReducer from './todoListReducer/reducer';
 
@@ -10,7 +9,6 @@ import todoListReducer from './todoListReducer/reducer';
 // const store = createStore(rootReducer, 
 //     applyMiddleware(thunk),
 // );
-
 
 const composeEnhancers =
   typeof window !== 'undefined' &&
@@ -24,9 +22,16 @@ const rootReducer = combineReducers({
   toDoList: todoListReducer
 });
 
-const store = createStore(rootReducer, 
-  composeEnhancers(
-    applyMiddleware(thunk)),
-);
+// const store = createStore(rootReducer, 
+//   composeEnhancers(applyMiddleware(thunk)),
+// );
+
+export const store = configureStore({
+  reducer: rootReducer,
+  // middleware: (getDefaultMiddleware) =>
+  //   getDefaultMiddleware().concat(/* altri middleware */),
+});
+
+
 
 export default store;
