@@ -12,7 +12,7 @@ import {
   removeTask,
 } from "@/lib/redux/todoListReducer/action";
 
-import { addUser } from "@/lib/redux/userLoginReduder/actions";
+import { addUser, removeUser, updateUser } from "@/lib/redux/userLoginReduder/actions";
 
 //import {  fetchToDo,} from "@/lib/redux/todoListReducer/action";
 //import { addTask, removeTask, completedTask } from "@/lib/redux/todoListReducer/action";
@@ -53,10 +53,13 @@ export default function HomePage() {
 
     // Aggiungi un utente
     store.dispatch(addUser({ name: "Mario Rossi" }));
+    store.dispatch(updateUser({ name: "Simone Muccioli" }));
+    store.dispatch(removeUser())
     //console.log(store.getState().user);
     //console.log(store.getState().user);
 
     const state = store.getState();
+    console.log('state: ', state)
 
     //console.log("---Store content:", store.getState());
     console.log("-------------------");
