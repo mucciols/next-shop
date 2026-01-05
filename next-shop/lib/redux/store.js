@@ -2,7 +2,8 @@ import { combineReducers  } from 'redux'
 import { configureStore } from '@reduxjs/toolkit';
 import userLoginreducer from './userLoginReduder/actions'
 import tasksReducer from './todoListReducer/action';
-import logReducer from './middleware/log';
+
+import logger from 'redux-logger'
 
 // compose ehnancers server per React DevTools
 // nel caso non venga usato, toglierlo anche dal create store
@@ -31,7 +32,7 @@ export const store = configureStore({
   reducer: rootReducer,
   
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(logReducer),
+    getDefaultMiddleware().concat(logger),
 });
 
 export default store;
