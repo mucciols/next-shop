@@ -40,3 +40,6 @@ redux funziona in questa maniera
     oppure vedi la action fetchToDo
 
 5) aggiungi Redux DevTools dal chrome store
+
+
+5) per abilitare il tab TRACE in Redux DevTools installare 
