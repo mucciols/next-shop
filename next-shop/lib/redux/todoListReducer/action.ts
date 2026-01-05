@@ -1,5 +1,11 @@
-import { createAction, createReducer } from "@reduxjs/toolkit";
+import { createAction, createReducer, createSlice } from "@reduxjs/toolkit";
 import store from "@/lib/redux/store";
+
+
+createSlice({
+  name: 'TASKS',
+  initialState: []
+})
 
 export const addTask = createAction<{ task: string }>("TASK_ADD");
 //le action sono azioni che si possono fare sullo state
