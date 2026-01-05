@@ -26,6 +26,7 @@ export default function HomePage() {
   store.dispatch(addTask("Task 1"));
   //store.dispatch({ type: "ADD_TASK", payload:{ task: "Task 1" }})
 
+  // store.dispatch({ type: "ADD_USER", payload:{ id: 1 } })
   console.log("store:", store.getState());
 
   // questa funzione e quella sotto fanno la stessa

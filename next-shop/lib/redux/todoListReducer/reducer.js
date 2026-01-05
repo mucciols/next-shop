@@ -1,3 +1,5 @@
+import * as actionTypes from '@/lib/redux/actionTypes'
+
 //il reducer serve solo a salvare/aggiornare lo stato
 
 //to do list reducer
@@ -5,7 +7,7 @@ let id = 0
 
 export default function reducer(state = [], action) {
   switch (action.type) {
-    case "ADD_TASK":
+    case actionTypes.ADD_TASK:
       return [
         ...state,
         {
@@ -15,7 +17,7 @@ export default function reducer(state = [], action) {
         }
       ];
 
-    case "REMOVE_TASK":
+    case actionTypes.REMOVE_TASK:
       return state.filter(task => task.id !== action.payload.id);
 
     default:
