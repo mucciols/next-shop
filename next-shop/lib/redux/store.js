@@ -1,7 +1,13 @@
-import { legacy_createStore as createStore} from 'redux'
+import { legacy_createStore as createStore, combineReducers } from 'redux'
 
-import reducer from './reducer'
+import userLoginreducer from './userLoginReduder/reducer'
+import todoListReducer from './todoListReducer/reducer';
 
-const store = createStore(reducer)
+const rootReducer = combineReducers({
+  userLogin: userLoginreducer,
+  toDoList: todoListReducer
+});
+
+const store = createStore(rootReducer);
 
 export default store;

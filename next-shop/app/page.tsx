@@ -5,6 +5,7 @@ import ProductCard from "@/components/ProductCard";
 import { useEffect, useState } from "react";
 import { getProducts } from "@/lib/products";
 import Page from "@/components/Page";
+import store from "@/lib/redux/store";
 
 //fetch server side data
 export default function HomePage() {
@@ -14,6 +15,14 @@ export default function HomePage() {
       setProducts(products);
     });
   }, []);
+
+  console.log('-------------------');
+  console.log('-------------------');
+  console.log('-------------------');
+  console.log('store:', store.getState())
+  console.log('-------------------');
+  console.log('-------------------');
+  console.log('-------------------');
 
   return (
     <Page title="Indoor Plants">

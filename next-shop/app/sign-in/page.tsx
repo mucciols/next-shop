@@ -17,13 +17,13 @@ export default function SignInPage() {
     event.preventDefault();
     setState({ error: false, loading: true });
     try {
-      const response = await fetchJson("api/login", {
+      const response = await fetchJson("/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email, password: password }),
       });
       setState({ error: false, loading: false });
-      // console.log("sign in response: ", response);
+      console.log("sign in response: ", response);
       router.push('/');
     } catch (error) {
       setState({ error: true, loading: false });

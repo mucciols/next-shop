@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { fetchJson } from "../api";
+import { useSelector } from "react-redux";
+
 import store from "@/lib/redux/store";
 
 export async function POST(req: NextRequest, res: NextResponse) {
@@ -28,9 +30,13 @@ export async function POST(req: NextRequest, res: NextResponse) {
     });
 
     store.dispatch({type: "ADD_USER", payload:{ id: user.id, name: user.username }});
-    console.log("store 1: ", store.getState());
-    store.dispatch({type: "REMOVE_USER", payload:{ id: user.id}});
-    console.log("store 1: ", store.getState());
+    console.log("store 2: ", store.getState());
+    // store.dispatch({type: "REMOVE_USER", payload:{ id: user.id}});
+    // console.log("store 2: ", store.getState());
+
+    //const users = useSelector(state => state.user); // nome reducer
+
+
 
     res.cookies.set("jwt", jwt, {
       httpOnly: true,
