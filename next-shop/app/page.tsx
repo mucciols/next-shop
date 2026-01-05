@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { getProducts } from "@/lib/products";
 import Page from "@/components/Page";
 import store from "@/lib/redux/store";
+import { addTask, removeTask } from "@/lib/redux/todoListReducer/action";
 
 //fetch server side data
 export default function HomePage() {
@@ -16,13 +17,25 @@ export default function HomePage() {
     });
   }, []);
 
-  console.log('-------------------');
-  console.log('-------------------');
-  console.log('-------------------');
-  console.log('store:', store.getState())
-  console.log('-------------------');
-  console.log('-------------------');
-  console.log('-------------------');
+  console.log("-------------------");
+  console.log("-------------------");
+  console.log("-------------------");
+
+  // questa funzione e quella sotto fanno la stessa
+  // cosa ossia aggiungere un elemento allo store
+  store.dispatch(addTask("Task 1"));
+  //store.dispatch({ type: "ADD_TASK", payload:{ task: "Task 1" }})
+
+  console.log("store:", store.getState());
+
+  // questa funzione e quella sotto fanno la stessa
+  // cosa ossia aggiungere un elemento allo store
+  store.dispatch(removeTask(1));
+  //store.dispatch({ type: "REMOVE_TASK", payload:{ id: 1 } })
+
+  console.log("-------------------");
+  console.log("-------------------");
+  console.log("-------------------");
 
   return (
     <Page title="Indoor Plants">
