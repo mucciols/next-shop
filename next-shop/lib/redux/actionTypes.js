@@ -1,5 +1,8 @@
-export const ADD_TASK = "ADD_TASK";
-export const REMOVE_TASK = "REMOVE_TASK";
+//action del task
+export const TASK_ADD = "ADD_TASK";
+export const TASK_REMOVE = "REMOVE_TASK";
 export const TASK_COMPLETED = "TASK_COMPLETED";
-export const ADD_USER = "ADD_USER";
-export const REMOVE_USER = "REMOVE_USER";
+
+//actin dello user
+export const USER_ADD = "ADD_USER";
+export const USER_REMOVE = "REMOVE_USER";

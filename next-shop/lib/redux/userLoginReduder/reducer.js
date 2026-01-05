@@ -5,9 +5,9 @@ import * as actionTypes from '@/lib/redux/actionTypes'
 //user login reducer
 export default function reducer(state={}, action) {
   switch (action.type) {
-    case actionTypes.ADD_USER:
+    case actionTypes.USER_ADD:
       return action.payload;
-    case actionTypes.REMOVE_USER:
+    case actionTypes.USER_REMOVE:
       //return state.filter(item => item.user.id !== action.payload.id)
       return {};
       //return null;
