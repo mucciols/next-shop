@@ -38,3 +38,5 @@ redux funziona in questa maniera
                 👉 Senza thunk questo codice crasherebbe.
 
     oppure vedi la action fetchToDo
+
+5) aggiungi Redux DevTools dal chrome store

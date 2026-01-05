@@ -1,14 +1,32 @@
-import { legacy_createStore as createStore, combineReducers, applyMiddleware } from 'redux'
+import { legacy_createStore as createStore, combineReducers, applyMiddleware, compose  } from 'redux'
 import { thunk } from 'redux-thunk';
 
 import userLoginreducer from './userLoginReduder/reducer'
 import todoListReducer from './todoListReducer/reducer';
+
+// compose ehnancers server per React DevTools
+// nel caso non venga usato, toglierlo anche dal create store
+// e generare il createStore semplicemente cosi
+// const store = createStore(rootReducer, 
+//     applyMiddleware(thunk),
+// );
+
+
+const composeEnhancers =
+  typeof window !== 'undefined' &&
+  (window).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? (window).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    : compose;
+
 
 const rootReducer = combineReducers({
   userLogin: userLoginreducer,
   toDoList: todoListReducer
 });
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(rootReducer, 
+  composeEnhancers(
+    applyMiddleware(thunk)),
+);
 
 export default store;
