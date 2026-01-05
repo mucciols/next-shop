@@ -1,7 +1,7 @@
 import { combineReducers, compose  } from 'redux'
 import { configureStore } from '@reduxjs/toolkit';
 import userLoginreducer from './userLoginReduder/reducer'
-import todoListReducer from './todoListReducer/reducer';
+import todoListReducer from './todoListReducer/action';
 
 // compose ehnancers server per React DevTools
 // nel caso non venga usato, toglierlo anche dal create store
@@ -18,8 +18,8 @@ const composeEnhancers =
 
 
 const rootReducer = combineReducers({
+  toDoList: todoListReducer,
   userLogin: userLoginreducer,
-  toDoList: todoListReducer
 });
 
 // const store = createStore(rootReducer, 
